@@ -1,6 +1,5 @@
 import React from "react";
 import { Book } from "../book/book";
-import Styles from "./Bookshelf.scss";
 
 const Bookshelf = ({ books, title }) => {
   return (
