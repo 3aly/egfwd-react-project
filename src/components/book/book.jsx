@@ -45,7 +45,7 @@ export const Book = ({ book }) => {
                 class="dropdown-item"
                 href="#"
                 onClick={() => {
-                  handelClick(book.id, 0);
+                  handelClick(book.id, "currentlyReading");
                 }}
               >
                 Currently Reading
@@ -56,7 +56,7 @@ export const Book = ({ book }) => {
                 class="dropdown-item"
                 href="#"
                 onClick={() => {
-                  handelClick(book.id, 1);
+                  handelClick(book.id, "wantToRead");
                 }}
               >
                 want To Reading
@@ -67,7 +67,7 @@ export const Book = ({ book }) => {
                 class="dropdown-item"
                 href="#"
                 onClick={() => {
-                  handelClick(book.id, 2);
+                  handelClick(book.id, "read");
                 }}
               >
                 Read
