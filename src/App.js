@@ -18,10 +18,10 @@ function App() {
   const { books, setBooks } = useContext(BooksContex);
   const [bok, setBok] = useState();
   const currentlyReading = books.filter(
-    (book) => book.value === "currentlyReading"
+    (book) => book.shelf === "currentlyReading"
   );
-  const wantToReading = books.filter((book) => book.value === "wantToRead");
-  const read = books.filter((book) => book.value === "read");
+  const wantToReading = books.filter((book) => book.shelf === "wantToRead");
+  const read = books.filter((book) => book.shelf === "read");
 
   // console.log(
   //   currentlyReading,
@@ -31,28 +31,16 @@ function App() {
   //   read,
   //   "read"
   // );
-  let all = [];
+
   useEffect(() => {
     getAll()
-      .then((book, index = 7) => setBok(book))
-      .then((bok) => all.push(bok.title))
-
+      .then((book) => {
+        setBooks(book);
+      })
       .catch((error) => {
         console.log("error");
       });
-  }, []);
-
-  console.log(all);
-
-  // const allbooks = bok.map((book, index = 7) => {
-  //   setBooks({
-  //     name: book.title,
-  //     writer: book.authors,
-  //     imgurl: book.imageLinks.thumbnail,
-  //     id: index++,
-  //   });
-  // });
-  // console.log(allbooks);
+  }, [books]);
 
   return (
     <div className="app">

@@ -1,6 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { search } from "../../BooksAPI";
 import Bookshelf from "../Bookshelf/Bookshelf";
 import Styles from "./SearchPage.module.scss";
 
@@ -10,17 +12,10 @@ const SearchPage = ({
   onSetShowSearchpage,
   showSearchPage,
 }) => {
-  const [search, setSearch] = useState("");
-
-  const filterd = books.filter(
-    (book) =>
-      book.name.toLowerCase().includes(search.toLowerCase()) ||
-      book.writer.toLowerCase().includes(search.toLowerCase())
-  );
+  const [searchedbooks, setSearched] = useState([]);
 
   const handelSearch = (word) => {
-    setSearch(word);
-    console.log(search);
+    search(word).then((book) => setSearched(book));
   };
 
   return (
@@ -42,7 +37,7 @@ const SearchPage = ({
       </div>
       <div className="search-books-results">
         <ol className="books-grid">
-          <Bookshelf books={filterd} title={"Search Results"} />
+          <Bookshelf books={searchedbooks} title={"Search Results"} />
         </ol>
       </div>
     </div>

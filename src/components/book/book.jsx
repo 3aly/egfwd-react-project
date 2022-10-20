@@ -1,22 +1,25 @@
 import React from "react";
 import { useContext } from "react";
+import { update } from "../../BooksAPI.js";
 import { BooksContex } from "../Books.context.jsx/Books.context.jsx";
 
-export const Book = ({ book }) => {
-  const { name, writer, imgurl } = book;
+export const Book = ({ book, id }) => {
+  const { title, authors, imageLinks } = book;
   const { books, setBooks } = useContext(BooksContex);
 
-  const handelClick = (id, newValue) => {
-    const newState = books.map((obj) => {
-      if (obj.id === id) {
-        return { ...obj, value: newValue };
-      }
+  const handelClick = (book, newValue) => {
+    // const newState = books.map((obj) => {
+    //   if (obj.id === book.id) {
+    //     return { ...obj, shelf: newValue };
+    //   }
 
-      // 👇️ otherwise return object as is
-      return obj;
+    //   // 👇️ otherwise return object as is
+    //   return obj;
+    // });
+    update(book, newValue).then((res) => {
+      console.log(res);
+      setBooks(book);
     });
-
-    setBooks(newState);
   };
 
   return (
@@ -28,7 +31,7 @@ export const Book = ({ book }) => {
             width: 128,
             height: 193,
           }}
-          src={imgurl}
+          src={imageLinks.thumbnail}
         />
         <div class="dropdown  book-shelf-changer">
           <a
@@ -45,7 +48,7 @@ export const Book = ({ book }) => {
                 class="dropdown-item"
                 href="#"
                 onClick={() => {
-                  handelClick(book.id, "currentlyReading");
+                  handelClick(id, "currentlyReading");
                 }}
               >
                 Currently Reading
@@ -56,7 +59,7 @@ export const Book = ({ book }) => {
                 class="dropdown-item"
                 href="#"
                 onClick={() => {
-                  handelClick(book.id, "wantToRead");
+                  handelClick(id, "wantToRead");
                 }}
               >
                 want To Reading
@@ -67,7 +70,7 @@ export const Book = ({ book }) => {
                 class="dropdown-item"
                 href="#"
                 onClick={() => {
-                  handelClick(book.id, "read");
+                  handelClick(id, "read");
                 }}
               >
                 Read
@@ -77,8 +80,8 @@ export const Book = ({ book }) => {
         </div>
       </div>
 
-      <div className="book-title">{name}</div>
-      <div className="book-authors">{writer}</div>
+      <div className="book-title">{title}</div>
+      <div className="book-authors">{authors}</div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import data from "../../Assets/data";
 export const BooksContex = createContext("");
 
 export const BooksProvider = ({ children }) => {
-  const [books, setBooks] = useState(data);
+  const [books, setBooks] = useState([]);
 
   return (
     <BooksContex.Provider value={{ books, setBooks }}>
