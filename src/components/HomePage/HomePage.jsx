@@ -1,7 +1,6 @@
 import React from "react";
 import { useContext } from "react";
 import Bookshelf from "../Bookshelf/Bookshelf";
-import Styles from "./HomePage.module.scss";
 import { BooksContex } from "./components/Books.context.jsx/Books.context.jsx";
 
 const HomePage = () => {

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { search } from "../../BooksAPI";
 import Bookshelf from "../Bookshelf/Bookshelf";
-import Styles from "./SearchPage.module.scss";
 
 const SearchPage = ({
   targetValue,
