@@ -16,9 +16,17 @@ const HomePage = () => {
       </div>
       <div className="list-books-content">
         <div>
-          <Bookshelf books={currentlyReading} title={"Currently Reading"} />
-          <Bookshelf books={wantToReading} title={"Want To Read"} />
-          <Bookshelf books={read} title={"Read"} />
+          <Bookshelf
+            books={currentlyReading}
+            isSearch={false}
+            title={"Currently Reading"}
+          />
+          <Bookshelf
+            books={wantToReading}
+            isSearch={false}
+            title={"Want To Read"}
+          />
+          <Bookshelf books={read} isSearch={false} title={"Read"} />
         </div>
       </div>
       <div className="open-search">

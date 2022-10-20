@@ -16,7 +16,8 @@ import { useEffect } from "react";
 
 function App() {
   const { books, setBooks } = useContext(BooksContex);
-  const [bok, setBok] = useState();
+  const { searchedbooks, setSearchedbooks } = useContext(BooksContex);
+  console.log(books);
   const currentlyReading = books.filter(
     (book) => book.shelf === "currentlyReading"
   );
@@ -55,12 +56,20 @@ function App() {
               </div>
               <div className="list-books-content">
                 <div>
+                  <Bookshelf books={books} title={"all"} isSearch={false} />
+
                   <Bookshelf
                     books={currentlyReading}
                     title={"Currently Reading"}
+                    isSearch={false}
                   />
-                  <Bookshelf books={wantToReading} title={"Want To Read"} />
-                  <Bookshelf books={read} title={"Read"} />
+
+                  <Bookshelf
+                    books={wantToReading}
+                    title={"Want To Read"}
+                    isSearch={false}
+                  />
+                  <Bookshelf books={read} title={"Read"} isSearch={false} />
                 </div>
               </div>
               <div className="open-search">
