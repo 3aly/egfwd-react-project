@@ -56,7 +56,7 @@ function App() {
               </div>
               <div className="list-books-content">
                 <div>
-                  <Bookshelf books={books} title={"all"} isSearch={false} />
+                  {/* <Bookshelf books={books} title={"all"} isSearch={false} /> */}
 
                   <Bookshelf
                     books={currentlyReading}
