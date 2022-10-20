@@ -7,31 +7,17 @@ import { BooksContex } from "./components/Books.context.jsx/Books.context.jsx";
 import SearchPage from "./components/SearchPage/SearchPage";
 import { Route } from "react-router-dom";
 import { getAll } from "../src/BooksAPI";
-import { update } from "../src/BooksAPI";
-
-import { search } from "../src/BooksAPI";
 
 import { Link, Routes } from "react-router-dom";
 import { useEffect } from "react";
 
 function App() {
   const { books, setBooks } = useContext(BooksContex);
-  const { searchedbooks, setSearchedbooks } = useContext(BooksContex);
-  console.log(books);
   const currentlyReading = books.filter(
     (book) => book.shelf === "currentlyReading"
   );
   const wantToReading = books.filter((book) => book.shelf === "wantToRead");
   const read = books.filter((book) => book.shelf === "read");
-
-  // console.log(
-  //   currentlyReading,
-  //   "currentlyReading",
-  //   wantToReading,
-  //   "wantToReading",
-  //   read,
-  //   "read"
-  // );
 
   useEffect(() => {
     getAll()
@@ -56,8 +42,6 @@ function App() {
               </div>
               <div className="list-books-content">
                 <div>
-                  {/* <Bookshelf books={books} title={"all"} isSearch={false} /> */}
-
                   <Bookshelf
                     books={currentlyReading}
                     title={"Currently Reading"}

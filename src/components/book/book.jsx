@@ -5,8 +5,6 @@ import { BooksContex } from "../Books.context.jsx/Books.context.jsx";
 
 export const Book = ({ book, isSearch }) => {
   const { title, authors, imageLinks } = book;
-  const { books, setBooks } = useContext(BooksContex);
-  const { searchedbooks, setSearchedbooks } = useContext(BooksContex);
 
   const handelClick = (book, newValue, isSearch) => {
     update(book, newValue).then(getAll());
@@ -80,6 +78,23 @@ export const Book = ({ book, isSearch }) => {
             </li>
           </ul>
         </div>
+
+        {/* <div className="book-shelf-changer">
+          <select
+            value={book.shelf ? book.shelf : "none"}
+            onChange={(event) => {
+              handelClick(book, event.target.value);
+            }}
+          >
+            <option value="move" disabled>
+              Move to...
+            </option>
+            <option value="currentlyReading">Currently Reading</option>
+            <option value="wantToRead">Want to Read</option>
+            <option value="read">Read</option>
+            <option value="none">None</option>
+          </select>
+        </div> */}
       </div>
 
       <div className="book-title">{title}</div>
