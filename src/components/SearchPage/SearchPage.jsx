@@ -13,10 +13,102 @@ const SearchPage = ({
   onSetShowSearchpage,
   showSearchPage,
 }) => {
+  const availbewords = [
+    "Android",
+    "Art",
+    "Artificial Intelligence",
+    "Astronomy",
+    "Austen",
+    "Baseball",
+    "Basketball",
+    "Bhagat",
+    "Biography",
+    "Brief",
+    "Business",
+    "Camus",
+    "Cervantes",
+    "Christie",
+    "Classics",
+    "Comics",
+    "Cook",
+    "Cricket",
+    "Cycling",
+    "Desai",
+    "Design",
+    "Development",
+    "Digital Marketing",
+    "Drama",
+    "Drawing",
+    "Dumas",
+    "Education",
+    "Everything",
+    "Fantasy",
+    "Film",
+    "Finance",
+    "First",
+    "Fitness",
+    "Football",
+    "Future",
+    "Games",
+    "Gandhi",
+    "Homer",
+    "Horror",
+    "Hugo",
+    "Ibsen",
+    "Journey",
+    "Kafka",
+    "King",
+    "Lahiri",
+    "Larsson",
+    "Learn",
+    "Literary Fiction",
+    "Make",
+    "Manage",
+    "Marquez",
+    "Money",
+    "Mystery",
+    "Negotiate",
+    "Painting",
+    "Philosophy",
+    "Photography",
+    "Poetry",
+    "Production",
+    "Programming",
+    "React",
+    "Redux",
+    "River",
+    "Robotics",
+    "Rowling",
+    "Satire",
+    "Science Fiction",
+    "Shakespeare",
+    "Singh",
+    "Swimming",
+    "Tale",
+    "Thrun",
+    "Time",
+    "Tolstoy",
+    "Travel",
+    "Ultimate",
+    "Virtual Reality",
+    "Web Development",
+    "iOS",
+  ];
   const { searchedbooks, setSearchedbooks } = useContext(BooksContex);
 
   const handelSearch = (word) => {
-    search(word).then((book) => setSearchedbooks(book));
+    if (word === "") {
+      setSearchedbooks([]);
+      return;
+    } else {
+      search(word).then((book) => {
+        if (book.error === "empty query") {
+          return setSearchedbooks([]);
+        } else {
+          return setSearchedbooks(book);
+        }
+      });
+    }
   };
 
   return (

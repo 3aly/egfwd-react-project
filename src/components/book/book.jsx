@@ -2,7 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { update, getAll } from "../../BooksAPI.js";
 import { BooksContex } from "../Books.context.jsx/Books.context.jsx";
-
+import arrow from "../../icons/arrow-drop-down.svg";
+import "./book.styles.css";
 export const Book = ({ book, isSearch }) => {
   const { title, authors, imageLinks } = book;
 
@@ -21,7 +22,7 @@ export const Book = ({ book, isSearch }) => {
           }}
           src={imageLinks.thumbnail}
         />
-        <div class="dropdown  book-shelf-changer">
+        {/* <div class="dropdown  book-shelf-changer">
           <a
             class="btn btn-secondary dropdown-toggle bg-success rounded-circle"
             href="#"
@@ -77,9 +78,14 @@ export const Book = ({ book, isSearch }) => {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
 
-        {/* <div className="book-shelf-changer">
+        <div
+          className="book-shelf-changer"
+          style={{
+            backgroundImage: `url(${arrow})`,
+          }}
+        >
           <select
             value={book.shelf ? book.shelf : "none"}
             onChange={(event) => {
@@ -94,7 +100,7 @@ export const Book = ({ book, isSearch }) => {
             <option value="read">Read</option>
             <option value="none">None</option>
           </select>
-        </div> */}
+        </div>
       </div>
 
       <div className="book-title">{title}</div>
