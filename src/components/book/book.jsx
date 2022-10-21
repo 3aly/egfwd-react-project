@@ -4,9 +4,7 @@ import { update, getAll } from "../../BooksAPI.js";
 import { BooksContex } from "../Books.context.jsx/Books.context.jsx";
 import arrow from "../../icons/arrow-drop-down.svg";
 import "./book.styles.css";
-export const Book = ({ book, isSearch }) => {
-  const { title, authors, imageLinks } = book;
-
+export const Book = ({ title, authors, pic, book }) => {
   const handelClick = (book, newValue, isSearch) => {
     update(book, newValue).then(getAll());
   };
@@ -20,7 +18,7 @@ export const Book = ({ book, isSearch }) => {
             width: 128,
             height: 193,
           }}
-          src={imageLinks.thumbnail}
+          src={pic}
         />
         {/* <div class="dropdown  book-shelf-changer">
           <a

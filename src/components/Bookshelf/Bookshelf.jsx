@@ -9,6 +9,8 @@ import {
   Outlet,
 } from "react-router-dom";
 
+import dummycover from "../../icons/images.jpg";
+
 const Bookshelf = ({ books, title, isSearch }) => {
   return (
     <div className="bookshelf my-3">
@@ -16,7 +18,23 @@ const Bookshelf = ({ books, title, isSearch }) => {
       <div className="bookshelf-books">
         <ol className="books-grid">
           {books.map((book) => {
-            return <Book book={book} key={book.id} isSearch={isSearch} />;
+            const title = book.title ? book.title : "Unknown";
+            const authors = book.authors ? book.authors : "Not Found";
+
+            const pic =
+              book.imageLinks === undefined
+                ? dummycover
+                : book.imageLinks.thumbnail;
+            return (
+              <Book
+                title={title}
+                authors={authors}
+                pic={pic}
+                key={book.id}
+                isSearch={isSearch}
+                book={book}
+              />
+            );
           })}
         </ol>
       </div>
